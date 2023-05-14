@@ -1,0 +1,199 @@
+
+\section{\esp Introdução}
+
+Neste trabalho, serão implementados dois métodos para determinar fechos transitivos diretos e inversos em grafos direcionados: um método naive de busca por vértices e o método de Warshall. A base e a antibase de um grafo também serão determinadas usando essas estratégias. Experimentos serão realizados para avaliar o tempo médio gasto por cada estratégia em grafos aleatórios com diferentes tamanhos.
+
+\section{\esp Desenvolvimento}
+
+O trabalho foi realizado utilizando a linguagem Java. Primeiramente foi realizado o método para a criação de grafos aleatórios. O usuário pode escolher o grafo de 100, 1.000, 10.000 ou 100.000 vértices. Após isso, o programa salva o grafo gerado em um arquivo .txt, apenas para conferência, com o nome de "GRAFOx.txt" (Este "x" é variável, e depende do número de vértices que o usuário escolheu). Após isso, o programa interage com o usuário novamente, perguntando se o mesmo gostaria de mostarar o fecho transitivo direto utilizando o método naive de busca em Largura ou o indireto, perguntando novamente o método que gostaria.
+
+O método naive de Busca em Largura foi escolhido apenas por escolha do aluno, que possuía certa curiosidade em saber como este método funcionaria desde grafos pequenos até grandes, visto que a busca em largura utiliza uma abordagem de nível por nível, visitando todos os vértices a uma distância k antes de avançar para os outros vértices. Além disso, precisamos ter em mente a complexidade do método naive de Busca em Largura que é de O(V + E), onde V é o número de vértices e E é o número de arestas, no pior caso, ou seja, quando o método passa por todos os outros vértices antes de chegar no final.
+
+Este relatório em TeX foi realizado conforme o Modelo Canônico de Artigo do ICEI, da PUC MIinas.
+
+\subsection{\esp Método Naive - Busca em Largura - Breve explicação}
+
+A Busca em Largura é um algoritmo utilizado para percorrer ou buscar elementos em uma estrutura de dados em forma de grafo, como um grafo não direcionado ou um grafo direcionado. O algoritmo explora os vértices do grafo em camadas, começando pelo vértice inicial e expandindo para os vértices adjacentes antes de avançar para os vizinhos subsequentes. A BFS utiliza uma fila para armazenar os vértices a serem visitados, garantindo que os vértices adjacentes sejam visitados em ordem de proximidade ao vértice inicial. Esse algoritmo é amplamente utilizado para várias aplicações, como encontrar o caminho mais curto entre dois vértices, verificar a conexidade de um grafo, entre outros.
+
+\subsubsection{\esp Método de Warshall - Breve explicação}
+
+O algoritmo de Warshall é um algoritmo utilizado para determinar o fecho transitivo de um grafo direcionado. O fecho transitivo de um grafo é o conjunto de todos os pares de vértices que possuem um caminho entre eles. O algoritmo recebe uma matriz de adjacência do grafo como entrada e realiza uma série de iterações para atualizar a matriz, de forma a incluir todas as arestas que indiretamente conectam dois vértices. Ele utiliza uma abordagem dinâmica, onde a matriz de adjacência é atualizada iterativamente com base nas conexões diretas e indiretas entre os vértices. O algoritmo de Warshall é eficiente para encontrar o fecho transitivo em um grafo e é amplamente utilizado em diversas aplicações, como análise de dependências, análise de fluxo em redes, entre outros.
+
+\section{\esp RESULTADOS OBTIDOS}
+
+Abaixo há a discursão sobre os resultados obtidos durante a elaboração do trabalho, comparando o tempo de execução, consumo da CPU e memória.
+
+\vspace{\baselineskip}
+
+\begin{figure}[ht]
+	\centering	
+	\caption[\hspace{0.1cm}Eclipse Idle]{Eclipse em modo de espera}
+	\vspace{-0.4cm}
+	\includegraphics[width=0.6\textwidth]{figuras/eclipseidle.jpg}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte 
+	 \vspace{-0.2cm}
+\end{figure}
+\vspace{-0.5cm}
+
+\vspace{\baselineskip}
+
+Foi utilizada a IDE Eclipse na elaboração dos códigos do trabalho. A CPU do sistema é o AMD Ryzen 5 5600X, com 16GB de memória RAM. Enquanto o Eclipse está em idle, ele consome 586MB. Consumo razoável, se formos considerar os outros programas que estão abertos, como a Steam.
+
+\vspace{\baselineskip}
+
+Na execução do grafo de 100 vértices utilizando o método naive de Busca em Largura, a execução foi em aproximadamente 4 segundos. Já para o método de Warshall foi de 8 segundos. Se fôssemos seguir essa lógica, o consumo de memória deveria ser dobrado. Curiosamente, houve apenas um acréscimo de 22MB do uso de memória.
+
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figuras/naive100v.jpg}
+	\caption[\hspace{0.1cm}Eclipse Naive100v]{Naive - 100 Vértices}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figuras/warshall100v.jpg}
+	\caption[\hspace{0.1cm}Eclipse Warshall100v]{Warshall - 100 Vértices}
+  \end{minipage}
+\end{figure}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+Na execução do grafo de 1000 vértices, utilizando o método naive, o tempo de execução foi aumentado de forma gritante. A execução levou 97 segundos, ou 1 minuto e 37 segundos. O método de encontrar o fecho transitivo indireto foi o que mais levou tempo para ser executado. Nessa execução do algoritmo, foi consumido aproximadamente 800MB de memória. Agora, na execução do método de Warshall, a execução do fecho transitivo direto levou muito mais tempo do que a do método naive. A execução do método de Warshall foi iniciada às 19:36. Uma hora foi decorrida, e o programa ainda não tinha concluído a primeira tarefa de encontrar o fecho transitivo direto.
+
+\begin{figure}[ht]
+	\centering	
+	\caption[\hspace{0.1cm}Eclipse Idle]{Naive - 1000 Vértices}
+	\vspace{-0.4cm}
+	\includegraphics[width=0.6\textwidth]{figuras/naive1000v.jpg}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte 
+	 \vspace{-0.2cm}
+\end{figure}
+\vspace{-0.5cm}
+
+\vspace{\baselineskip}
+
+O método naive para o grafo de 10.000 vértices. A busca do fecho transitivo direto foi realizada em 10 minutos, e utilizou quase 3GB de memória. Após mais 20 minutos, o programa realizou a tarefa de encontrar o fecho transitivo indireto, utilizando 3,5GB de memória nesse processo. Na tentativa de encontrar o fecho transitivo direto utilizando o método de Warshall, o programa foi iniciado,tendo um gasto de memória parecido com o do método naive de Busca em Largura. A execução foi iniciada às 19:30, e após decorridas 1h e 10min, o programa ainda estava executando o método para encontrar o fecho transitivo direto. 
+
+\begin{figure}[ht]
+	\centering	
+	\caption[\hspace{0.1cm}Eclipse Idle]{Naive - 1000 Vértices}
+	\vspace{-0.4cm}
+	\includegraphics[width=0.6\textwidth]{figuras/grafo10000v.png}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte 
+	 \vspace{-0.2cm}
+\end{figure}
+\vspace{-0.5cm}
+
+\vspace{\baselineskip}
+
+Agora a execução do grafo de 100.000 vértices foi desastrosa. O programa simplesmente não conseguiu ser executado. Tentei executar no Eclipse de minha máquina e no Replit (https://replit.com
+/@nathanoli/Trabalho-GRAFOS?v=1). 
+Na minha máquina, foi utilizado incríveis 95,1\% de uso de CPU, e aproximadamente, 4GB de memória foram utilizados. Houve o erro (java.lang.Out Of Memory Error: 
+Java heap space), significando que o programa  não tem memória suficiente disponível no heap para alocar um novo objeto ou armazenar os dados necessários para a execução do programa. 
+Já na tentativa de executar pelo Replit, houve o mesmo erro, além de mostrar o alerta de que tanto a CPU, quanto a Memória estavam no limite.
+
+\subsubsection{\esp Comentários}
+
+Podemos perceber que, para grafos relativamente pequenos (100 e 1000 vértices) o programa é executado de maneira relativamente rápida, tanto no método naive de Busca em Largura quanto para o método de Warshall. Já para o grafo de 10.000 vértices a situação muda um pouco. Para encontrar o fecho transitivo direto pelo metodo naive, o tempo de busca é relativamente aceitável, com cerca de 10 minutos. A tarefa inversa também leva um tempo aceitável. A tarefa de localizar o fecho transitivo direto no mesmo grafo de 10.000 vértices utilizando o método de Warshall porém não foi bem sucedida. Por algum motivo o programa demorou muito para realizar a busca do fecho transitivo direto, não finalizando a tarefa após uma hora. 
+
+\vspace{\baselineskip}
+
+Agora, a execução do fecho transitivo direto tanto para o método naive de busca em largura quanto para o método de Warshall, no grafo de 100.000 vértices não foi bem sucedida, pelo contrário, o programa nem conseguiu ser iniciado. Após digitar o número de vértices que o usuário deseja, o programa cria e salva o grafo em um arquivo .txt, apenas para conferência 
+
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figuras/grafo100000 vertices.png}
+	\caption[\hspace{0.1cm}Eclipse Naive100v]{Eclipse - 100.000 Vértices}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figuras/grafo100000replit.png}
+	\caption[\hspace{0.1cm}Eclipse Warshall100v]{Replit - 100.000 Vértices}
+  \end{minipage}
+\end{figure}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{\esp Códigos}
+
+% Figura
+\begin{figure}[!ht]
+	\centering	
+	\caption[\hspace{0.1cm}Exemplo de tela de software.]{Classe Main do trabalho}
+	  \vspace{-0.4cm}
+	\includegraphics[width=.8\textwidth]{figuras/Main grafo v.jpg}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering	
+	\caption[\hspace{0.1cm}Exemplo de tela de software.]{Classe Grafo (Método Naive) do trabalho}
+	  \vspace{-0.4cm}
+	\includegraphics[width=.8\textwidth]{figuras/grafo trab grafo.jpg}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering	
+	\caption[\hspace{0.1cm}Exemplo de tela de software.]{Classe Grafo (Método Naive) do trabalho}
+	  \vspace{-0.4cm}
+	\includegraphics[width=.8\textwidth]{figuras/warshall trab grafos.jpg}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte
+\end{figure}
+
+%Utilize o \newpage no caso de quando a figura ficar sobreposta por um texto, como é o caso que acontece na figura anterior
+%Retire o \newpage para verificar esse exemplo
+\newpage
+%-------------------------------------------------------------------------------------------------------------------------
+\vspace{\baselineskip}
+
+\section{\esp Conclusão}
+
+A partir da elaboração deste trabalho, pude perceber que, para grafos menores, basicamente qualquer método de busca pode ser usado. Já para grafos muito maiores, nem qualquer tipo de busca pode ser utilizado. Com o avanço da tecnologia, haverão métodos mais eficazes de realizar buscas em grafos muito grandes.
+
+
+ \newpage
+\section{\esp REFERÊNCIAS}
+
+BEAMER, Scott. Direction-optimizing breadth-first search. Disponível em: <https://dl.acm.org/doi/10.
+5555/2388996.2389013>. Acesso em 23 Abr. 2023.
+
+\vspace{\baselineskip}
+
+GEEKSFORGEEKS. Transitive closure of a graph. Disponível em <https://www.geeksforgeeks.org/
+transitive-closure-of-a-graph/>. Acesso em 30 Abr. 2023.
+
+\vspace{\baselineskip}
+
+JUNIOR, Mário Sérgio Ferreira Alvim. Projeto e Análise de Algoritmos 2º Trabalho Prático. Disponível em <https://homepages.dcc.ufmg.br/~nivio/cursos/pa06/tp2/tp22/tp22.pdf>. Acesso em 22 Abr. 2023.
+
+\vspace{\baselineskip}
+
+SCIENCEDIRECT. Naïve Approach. Disponível em <https://www.sciencedirect.com/topics/
+computer-science/naive-approach> Acesso em 22 Abr. 2023.
+
+\vspace{\baselineskip}
+
+WARSHALL, Stephen. A Theorem on Boolean Matrices. Disponível em <https://dl.acm.org/doi/10.11
+45/321105.321107>. Acesso em 30 Abr. 2023.
